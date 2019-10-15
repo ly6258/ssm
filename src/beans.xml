@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 将Bean01类交给 Spring容器管理 -->
+	<bean id="bean01" class="com.inspur.constructor.Bean01"/>
+	<!-- 将Bean02类交给 Spring容器管理 -->
+	<bean id="bean02" class="com.inspur.staticfactory.Bean02Factory" factory-method="getBean02"/>
+	<!-- 将Bean03类交给 Spring容器管理 -->
+	<!-- <bean id="bean03Factory" class="com.inspur.factory.Bean03"/>
+	<bean id="bean03" factory-bean="bean03Factory" factory-method="getBean03"></bean> -->
+	<bean id="bean03" factory-bean="bean03Factory" factory-method="getBean03"></bean>
+	<bean id="bean03Factory" class="com.inspur.factory.Bean03Factory"></bean>
+<!-- 	<bean id="bean04" class="com.inspur.beans.Bean04" scope="singleton"/> -->
+	<bean id="bean04" class="com.inspur.beans.Bean04" scope="prototype"/>
+	<!-- 基于XML的setter设值注入 -->
+	<!-- <bean id="user01" class="com.inspur.assemble.User">
+		<property name="username" value="admin"></property>
+		<property name="password" value="123456"></property>
+		<property name="list" >
+			<list>
+				<value>书籍1</value>
+				<value>书籍2</value>
+			</list>
+		</property>
+		
+	</bean> -->
+	<!-- 基于XML的构造方法注入 -->
+	<bean id="user02" class="com.inspur.assemble.User">
+		<constructor-arg name="uname" value="student"></constructor-arg>		
+		<constructor-arg name="pwd" value="654321"></constructor-arg>		
+		<constructor-arg name="list">
+			<list>
+				<value>学院01</value>
+				<value>学院02</value>
+			</list>
+		</constructor-arg>		
+	</bean>
+</beans>

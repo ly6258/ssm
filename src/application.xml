@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 将UserDao层的业务类注册bean -->
+	<!-- <bean id="userDao" class="com.inspur.beans.UserDaoImpl">
+	</bean> -->
+	<bean id="userDao" class="com.inspur.beans.UserDaoImpl"/>
+	<!-- <bean name="userDao" class="com.inspur.beans.UserDaoImpl"></bean> -->
+	<!-- 将UserService层的业务类注册bean -->
+	<bean id="userService" class="com.inspur.beans.UserServiceImpl">
+		<!-- setter设值方法注入 -->
+		<!-- <property name="ud" ref="userDao"></property> -->
+		<!-- 构造方法（带参数）注入   当依赖是一个具体的值推荐用 value属性指定。如果依赖是一个对象推荐使用 ref属性指定依赖对象-->
+		<constructor-arg name="userDao" ref="userDao" ></constructor-arg>
+	</bean>
+</beans>
